@@ -1,12 +1,14 @@
 package com.example.parcial2_19812.adapters
 
 import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.parcial2_19812.PerfilActivity
 import com.example.parcial2_19812.R
 
 class ImageAdapter(private val images: List<Int>, private val texts: Array<String>, private val activity: Activity) : RecyclerView.Adapter<ImageAdapter.ViewHolder>() {
@@ -28,6 +30,11 @@ class ImageAdapter(private val images: List<Int>, private val texts: Array<Strin
         holder.image.layoutParams.width = 600
         holder.image.layoutParams.height = 600
         holder.text.setText(text)
+
+        if (position == 1) {
+            val intent = Intent(holder.itemView.context, PerfilActivity::class.java)
+            holder.itemView.context.startActivity(intent)
+        }
 
         if (position == 3) {
             holder.image.setOnClickListener {
